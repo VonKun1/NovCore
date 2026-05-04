@@ -1,0 +1,6 @@
+name: NovCore
+main: cn.vonkun.core.NovCore
+version: 0.2
+commands:
+  novcore:
+    aliases: [nc,nvc]
