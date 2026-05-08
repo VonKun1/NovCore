@@ -1,5 +1,7 @@
 package cn.vonkun.core.utils;
 
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -15,6 +17,16 @@ public class ChatUtil {
         return texts.stream()
                 .map(ChatUtil::format)
                 .collect(Collectors.toList());
+    }
+    public static String format(String text, Player player){
+        if (Bukkit.getServer()
+                .getPluginManager()
+                .getPlugin("PlaceholderAPI") != null){
+            return ChatColor
+                    .translateAlternateColorCodes('&',
+                            PlaceholderAPI.setPlaceholders(player,text));
+        }
+        return format(text);
     }
     public static void msg(Player player,String text){
         player.sendMessage(format(text));
