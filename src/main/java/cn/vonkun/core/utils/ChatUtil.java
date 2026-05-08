@@ -29,9 +29,23 @@ public class ChatUtil {
         return format(text);
     }
     public static void msg(Player player,String text){
+        if (Bukkit.getServer()
+                .getPluginManager()
+                .getPlugin("PlaceholderAPI") != null){
+            player.sendMessage(format(text,player));
+            return;
+        }
         player.sendMessage(format(text));
     }
     public static void msg(Player player, List<String> texts){
+        if (Bukkit.getServer()
+                .getPluginManager()
+                .getPlugin("PlaceholderAPI") != null){
+            for (String s : texts){
+                player.sendMessage(format(s,player));
+            }
+            return;
+        }
         for (String s : texts){
             player.sendMessage(format(s));
         }
